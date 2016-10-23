@@ -3,16 +3,18 @@ import sys
 
 
 def are_files_duplicates(file_path):
-    res = []
+    file_in_dirs = []
     for d, dirs, file in os.walk(file_path):
         for f in file:
-            res.append(os.path.join(d, f))
-    return res
+            if not f.startswith('.') and os.path.isfile(os.path.join(d, f)):
+                file_in_dirs.append(os.path.join(d, f))
+    return file_in_dirs
 
 def find_file_duplicates(file_list):
-    for file in file_list:
-        for 
+    pass
+
 
 if __name__ == '__main__':
-    print(are_files_duplicates(sys.argv[1]))
+    file_list = are_files_duplicates(sys.argv[1]))
+    find_file_duplicates(file_list)
 
