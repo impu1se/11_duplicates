@@ -14,12 +14,12 @@ def get_files_list(file_path):
 
 def find_file_duplicates(file_list):
     file_with_sum = {}
-    for file in file_list:
-        with open(file, 'rb') as f:
-            if binascii.crc32(f.peek()) in file_with_sum:
-                print(file,'\t' + file_with_sum[binascii.crc32(f.peek())])
-            else:
-                file_with_sum[binascii.crc32(f.peek())] = file
+    for file_path in file_list:
+        file = os.path.basename(file_path)
+        if file not in file_with_sum:
+            file_with_sum[file] = file_path
+        else:
+            print(file_path, '\t\t' + os.path.join(file_with_sum[file], file))
     return file_with_sum
 
 
