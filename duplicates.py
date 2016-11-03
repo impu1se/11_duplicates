@@ -1,6 +1,5 @@
 import os
 import sys
-import binascii
 
 
 def get_files_list(file_path):
@@ -12,18 +11,19 @@ def get_files_list(file_path):
     return file_in_dirs
 
 
-def find_file_duplicates(file_list):
+def find_duplicates(file_list):
     file_with_sum = {}
+    file_duplicates = []
     for file_path in file_list:
-        file = os.path.basename(file_path)
+        path, file = os.path.split(file_path)
         if file not in file_with_sum:
-            file_with_sum[file] = file_path
-        else:
-            print(file_path, '\t\t' + os.path.join(file_with_sum[file], file))
-    return file_with_sum
+            file_with_sum[file] = path
+        elif os.path.getsize(file_path) == os.path.getsize(os.path.join(file_with_sum[file], file)):
+            file_duplicates.append((file_path, os.path.join(file_with_sum[file], file)))
+    return file_duplicates
 
 
 if __name__ == '__main__':
     file_list = get_files_list(sys.argv[1])
-    find_file_duplicates(file_list)
+    print(find_duplicates(file_list))
 
