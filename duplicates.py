@@ -21,7 +21,7 @@ def find_duplicates(list_file_with_path):
         elif os.path.getsize(file_path) == \    
                 os.path.getsize(os.path.join(file_name_and_path[file_name],
                                              file_name)):
-            files_duplicates.append((file_path, os.path.join( # добавляет кортеж из двух дубликатов
+            files_duplicates.append((file_path, os.path.join(
                 file_name_and_path[file_name], file_name)))
     return files_duplicates
 
