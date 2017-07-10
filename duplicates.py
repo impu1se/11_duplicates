@@ -36,7 +36,7 @@ if __name__ == '__main__':
         files_duplicates = find_duplicates(files_list)
         if files_duplicates:
             for files in files_duplicates:
-                print('File 1: {0} \nFile 2: {1} \n--------------\n'.format(
+                print('File 1: {0} \nFile 2: {1} \n-------------\n'.format(
                     files[0], files[1]))
         else:
             print('The duplicates of files are not founds')
