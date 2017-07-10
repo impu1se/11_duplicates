@@ -18,7 +18,7 @@ def find_duplicates(list_file_with_path):
         path, file_name = os.path.split(file_path)
         if file_name not in file_name_and_path:
             file_name_and_path[file_name] = path  
-        elif os.path.getsize(file_path) == \    
+        elif os.path.getsize(file_path) == \
                 os.path.getsize(os.path.join(file_name_and_path[file_name],
                                              file_name)):
             files_duplicates.append((file_path, os.path.join(
